@@ -1,0 +1,40 @@
+﻿@model S00126699_CA2.Models.Actor
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Actor</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MovieID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MovieID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ActorsName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ActorsName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ScreenName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ScreenName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,35 @@
+﻿@model S00126699_CA2.Models.Movie
+
+@if (Model.Actors != null)
+{
+    <h5>@Model.MoviesName has @Model.Actors.Count() Events</h5>
+    <div class="table">
+        <table class="table table-striped">
+            <tr>
+            <th>
+                X X is an actor and his/her name in this movie, A B who played Y Y.
+            </th>
+            <tr>
+                <td>
+                    @foreach (var mov in Model.Actors)
+                    {
+                        <p>
+                            @Html.DisplayFor(modelItem => mov.ActorsName) is an actor and his/her name in this movie, @Html.DisplayFor(model => model.MoviesName) who played @Html.DisplayFor(modelItem => mov.ScreenName).
+
+                            @*<button class="btn btn-xs btn-info"><a style="color: white;"href="@Url.Action("Edit", "Actors", new { id = mov.MovieID })"><span style="color:white;" class="glyphicon glyphicon-pencil"></span> Edit </a></button>*@
+                        </p>
+                    }
+                </td>
+            </tr>
+
+        </table>
+        </div>
+        }
+        else
+        {
+            <p class="alert alert-info">No actors found!!</p>
+        
+            <p>
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        }

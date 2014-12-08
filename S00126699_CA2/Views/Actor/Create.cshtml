@@ -3,39 +3,39 @@
 @{
     ViewBag.Title = "Create";
 }
+<div align="center">
+    @using (Html.BeginForm())
+    {
 
-@using (Html.BeginForm())
-{
+        <fieldset>
+            <legend>Actor</legend>
 
-    <fieldset>
-        <legend>Actor</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ActorsName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ActorsName)
+                @Html.ValidationMessageFor(model => model.ActorsName)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ActorsName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ActorsName)
-            @Html.ValidationMessageFor(model => model.ActorsName)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ScreenName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ScreenName)
+                @Html.ValidationMessageFor(model => model.ScreenName)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ScreenName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ScreenName)
-            @Html.ValidationMessageFor(model => model.ScreenName)
-        </div>
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-
 
 
 @section Scripts {

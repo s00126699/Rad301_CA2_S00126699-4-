@@ -3,38 +3,63 @@
 @{
     ViewBag.Title = "Delete";
 }
+<div align="center">
+    <h2>Delete</h2>
 
-<h2>Delete</h2>
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>Actor</legend>
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>Actor</legend>
+        @*<div class="display-label">
+                @Html.DisplayNameFor(model => model.MovieID)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.MovieID)
+            </div>*@
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.MovieID)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MovieID)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.ActorsName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ActorsName)
+        </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ActorsName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ActorsName)
-    </div>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.ScreenName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ScreenName)
+        </div>
+    </fieldset>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ScreenName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ScreenName)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        @*@Html.ActionLink("Back to List", "Index")*@
+
+
+        <div class="btn-group" data-toggle="buttons">
+            <label class="pdsa-radiobutton btn btn-success active">
+                <span class="glyphicon glyphicon-ok"></span>
+                <input type="submit" value="Delete" />
+            </label>
+        </div>
+
+
+        <div class="btn-group" data-toggle="buttons">
+            <label class="pdsa-radiobutton btn btn-danger active">
+                <span class="glyphicon glyphicon-remove"></span>
+                @Html.ActionLink("Cancel", "Index")
+            </label>
+        </div>
+
+    }
+
+    @section scripts
+{
+        <script>
+            $ (function() {toastr.warning("This will delete the actor")})
+        </script>
+    }

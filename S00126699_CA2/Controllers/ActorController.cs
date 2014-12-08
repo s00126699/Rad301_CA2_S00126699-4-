@@ -25,6 +25,11 @@ namespace S00126699_CA2.Controllers
         public ActionResult Details(int id)
         { 
             Actor act = db.Actors.Find(id);
+            if (act == null)
+            {
+                return HttpNotFound();
+            }
+            
             return View(act);
         }
 
@@ -56,28 +61,28 @@ namespace S00126699_CA2.Controllers
         //
         // GET: /Actor/Edit/5
 
-        public ActionResult Edit(int id)
-        {
-            Actor actor = db.Actors.Find(id);
+        //public ActionResult Edit(int id)
+        //{
+        //    Actor actor = db.Actors.Find(id);
 
-            return View(actor);
-        }
+        //    return View(actor);
+        //}
 
-        //
-        // POST: /Actor/Edit/5
+        ////
+        //// POST: /Actor/Edit/5
 
-        [HttpPost]
-        public ActionResult Edit(Actor actor, int movieID)
-        {
-            if (ModelState.IsValid)
-            {
-                actor.MovieID = movieID;
-                db.Entry(actor).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(actor);
-        }
+        //[HttpPost]
+        //public ActionResult Edit(Actor actor, int movieID)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        actor.MovieID = movieID;
+        //        db.Entry(actor).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(actor);
+        //}
 
         #region Delete Actor
 

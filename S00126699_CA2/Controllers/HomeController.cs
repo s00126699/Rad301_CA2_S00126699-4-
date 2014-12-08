@@ -32,18 +32,18 @@ namespace S00126699_CA2.Controllers
         public ActionResult Details(int id = 0)
         {
             Movie m = db.Movies.Find(id);
-            //if (m == null)
-            //{
-            //    return HttpNotFound();
+            if (m == null)
+            {
+                return HttpNotFound();
 
-            //}
-            //else
-            //{
+            }
+            else
+            {
             //HEY SHOW ME ACTORS
             m.Actors = (from e in db.Actors
                         where e.MovieID.Equals(id)
                         select e).ToList();
-            //}
+            }
             //m.Actors.Count();
             return View(m);
         }
@@ -75,21 +75,20 @@ namespace S00126699_CA2.Controllers
         public ActionResult Edit(int id)
         {
             Movie movie = db.Movies.Find(id);
-            //if (movie == null)
-            //{
-            //    return HttpNotFound();
-            //}
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
             return View(movie);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Movie movie)
         {
             if (ModelState.IsValid)
             {
-                //Modified: the entity is being 
-                //tracked by the context and exists in the database, 
-                //and some or all of its property values have been modified
+               
                 db.Entry(movie).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -104,15 +103,12 @@ namespace S00126699_CA2.Controllers
         {
             Movie movie = db.Movies.Find(id);
 
-            // It goes "hey give me all actor id's where the equal to this movie id"
-            //movie.Actors = (from act in db.Actors
-            //                where act.MovieID.Equals(id)
-            //                select act).ToList();
-            
+          
             return View(movie);
         }
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Movie movie = db.Movies.Find(id);

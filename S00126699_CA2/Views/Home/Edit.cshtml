@@ -1,7 +1,7 @@
 ﻿@model S00126699_CA2.Models.Movie
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Movies";
 }
 <div align="center" class="container">
     <h2>Edit</h2>
@@ -12,7 +12,7 @@
         @Html.ValidationSummary(true)
 
         <fieldset>
-            <legend>Movie</legend>
+            
 
             @Html.HiddenFor(model => model.MovieID)
 
@@ -33,13 +33,24 @@
             </div>
 
             <p>
-                <input type="submit" value="Save" />
+                
             </p>
+
+            <div class="input-group" data-toggle="buttons">
+                <label class="pdsa-radiobutton btn btn-default active">
+                    <span class="glyphicon glyphicon-ok-circle"></span>
+                        <input type="submit" value="Save" />
+                    
+                </label>
+            </div>
         </fieldset>
     }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+    <div class="btn-group" data-toggle="buttons">
+        <label class="pdsa-radiobutton btn btn-danger active">
+            <span class="glyphicon glyphicon-remove"></span>
+            @Html.ActionLink("Cancel Editing", "Index")
+        </label>
     </div>
 
     </div>

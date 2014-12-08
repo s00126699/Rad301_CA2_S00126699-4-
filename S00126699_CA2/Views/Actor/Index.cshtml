@@ -4,13 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>All Actors</h2>
 
-<p>
-    @Html.ActionLink("Add Actor", "Index")
-</p>
-<table>
-    <tr>
+<div class="btn-group" data-toggle="buttons">
+    <label class="pdsa-radiobutton btn btn-default active">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+        @Html.ActionLink("Back to Home Page", "Index", "Home")
+    </label>
+</div>
+
+            <table class="table table-striped">
+    <tr class="info">
         <th>
             @Html.DisplayNameFor(model => model.MovieID)
         </th>
@@ -23,23 +27,32 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MovieID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ActorsName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScreenName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ActorID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ActorID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ActorID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActorsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScreenName)
+            </td>
+            <td>
+              
+                <div class="form-group">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="pdsa-radiobutton btn btn-danger active">
+                            <span class="glyphicon glyphicon-minus"></span>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MovieID })
+                        </label>
+                    </div>
+                </div>
+            
+                        </td>
+                    </tr>
+    }
 
 </table>
+
